@@ -1,0 +1,9 @@
+.contents.row
+  =form_tag("/emotions/#{@emotion.id}",method: :patch) do
+    %h3
+      編集
+    %textarea(cols="30" name="text" rows="10" )
+      = @emotion.text
+    %input(placeholder= "#{@emotion.text}" type="text" name="emotion" value="#{@emotion.emotion}")
+    %input(type="submit" value="修正完了")
+

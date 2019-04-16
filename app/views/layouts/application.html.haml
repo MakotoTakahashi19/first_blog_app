@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title EmoBrooog
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  -#   %script(src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+  -#   %script(src = "apprivations.js")
+  %body
+    %header.header
+      .header__bar.row
+        .header-left.shake-chunk 
+          = link_to image_tag("/assets/emotion_logo.png", width: '100', alt: "logo"), root_path
+        .header-right
+          - if user_signed_in?
+            %ul
+              
+              %li.nickname
+                %strong= link_to current_user.nickname, user_path(current_user.id)
+              %li
+                = link_to "プロフィール変更", edit_user_registration_path
+              %li
+                = link_to "ログアウト", destroy_user_session_path, method: :delete
+              %li
+                = link_to "想いを伝える", new_emotion_path
+          - else
+            %ul
+              %li
+                = link_to "メンバーになる", new_user_registration_path
+              %li
+                = link_to "ログイン", new_user_session_path
+    %p.notice= notice
+    %p.alert= alert
+    = yield
+
+    -# %p jQuery稼働テスト
+    -# :javascript
+    -#   $(document).ready(function() {
+    -#     $("p").text("jQuery稼働テスト(稼働中)");
+    -#   });

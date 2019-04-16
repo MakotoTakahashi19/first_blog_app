@@ -1,0 +1,6 @@
+.contents.row
+  .new-container
+    =form_tag("/emotions",method: :post) do
+      %textarea(cols="30" rows="10" placeholder="どうしたの？" type="text" name="text")
+      %input( placeholder="how are you" type="text" name="emotion")
+      %input(type="submit" value="伝える")

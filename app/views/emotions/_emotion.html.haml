@@ -1,0 +1,13 @@
+.content.post.randcolor.shake-hard.slider
+  %p.text
+  = simple_format(emotion.text)
+  %p.nickname
+  = simple_format(emotion.user.nickname)
+  %p.emotion
+  = simple_format(emotion.emotion)
+  - if user_signed_in? && current_user.id == emotion.user.id
+    .float
+      %p.edit
+      = link_to '編集', edit_emotion_path(emotion.id), method: :get
+      %p.delete
+      = link_to '削除', "emotions/#{emotion.id}", method: :delete

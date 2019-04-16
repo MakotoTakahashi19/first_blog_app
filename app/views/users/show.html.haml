@@ -1,0 +1,7 @@
+.contents.row
+  %p
+    = @nickname
+    さんの投稿一覧
+  - @emotions.each do |emotion|
+    = render partial: "emotions/emotion", locals: { emotion:emotion}
+  = paginate(@emotions)
